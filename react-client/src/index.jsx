@@ -7,7 +7,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      items: []
+      recipes: []
     }
   }
 
@@ -27,8 +27,8 @@ class App extends React.Component {
 
   render () {
     return (<div>
-      <h1>Item List</h1>
-      <List items={this.state.items}/>
+      <h1>Recipes!</h1>
+      <Recipes recipes={this.state.recipes}/>
     </div>)
   }
 }
