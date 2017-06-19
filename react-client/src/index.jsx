@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+// import search from './components/search.jsx';
 // import List from './components/List.jsx';
 
 class App extends React.Component {
@@ -25,12 +26,18 @@ class App extends React.Component {
     });
   }
 
+    // search(thing) {
+    //   console.log(`This thing was searched for: ${thing}`);
+    // }
+
   render () {
     return (<div>
       <h1>Recipes!</h1>
       {/*<Recipes recipes={this.state.recipes}/>*/}
-
-      <div>Input one ingredient: </div>
+      <div> Input your ingredient here: 
+        <input type="text"></input>
+        <button> Search </button>
+        </div>
     </div>)
   }
 }
