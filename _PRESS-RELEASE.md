@@ -18,10 +18,12 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
+  
   Food Vault
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+
   Input main ingredient and get recipes!
 
 ## Summary ##
@@ -57,5 +59,5 @@ Once the project moves into development, the press release can be used as a touc
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
-  
+
   Check us out our app FoodVault and try it our, whether you need to cook tonight or next week, this is a great way to discover recipes!
