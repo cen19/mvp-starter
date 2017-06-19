@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import List from './components/List.jsx';
+// import List from './components/List.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -28,7 +28,9 @@ class App extends React.Component {
   render () {
     return (<div>
       <h1>Recipes!</h1>
-      <Recipes recipes={this.state.recipes}/>
+      {/*<Recipes recipes={this.state.recipes}/>*/}
+
+      <div>Input one ingredient: </div>
     </div>)
   }
 }
