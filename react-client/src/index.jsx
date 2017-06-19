@@ -20,7 +20,7 @@ class App extends React.Component {
         })
       },
       error: (err) => {
-        console.log('err', err);
+        console.log(`err, ${JSON.stringify({err})}`);
       }
     });
   }

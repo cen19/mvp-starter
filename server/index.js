@@ -23,9 +23,13 @@ app.get('/items', function (req, res) {
   });
 });
 
-// app.post('/recipes/search', function (req, res) {
-//   console.log('in app.post');
-// });
+app.post('/recipes', function (req, res) {
+  if (req) {
+    console.log('req received');
+  } else {
+    res.send('hello to client!');
+  }
+});
 
 app.listen(3000, function() {
   console.log('listening on port 3000!');
