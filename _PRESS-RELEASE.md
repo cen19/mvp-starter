@@ -18,27 +18,37 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
+  Food Vault
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  Input main ingredient and get recipes!
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  This product will allow you to input a single ingredient and look up random things you can make with it. In the future, you will be able to input more ingredients to narrow the recipe.
 
 ## Problem ##
   > Describe the problem your product solves.
+  You have something in your fridge but don't know what you can make with it.
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+  You get to have some ideas and inspiration from recipes pulled from the internet.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
+  Figure out your random meal tonight with our app.
+
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
+  Just type in the ingredients to figure out what kind of things you can make!
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  I had a few ingredients lying around and couldn't decide what to make but with the help of this app, I was able to put together something delicious for dinner.
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+  Check us out our app FoodVault and try it our, whether you need to cook tonight or next week, this is a great way to discover recipes!
