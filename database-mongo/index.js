@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/recipes');
 
 var db = mongoose.connection;
 
@@ -12,8 +12,10 @@ db.once('open', function() {
 });
 
 var recipeSchema = mongoose.Schema({
-
-
+  title: String,
+  sourceUrl: String,
+  imageUrl: String,
+  rank: Number
 });
 
 var Recipe = mongoose.model('Recipe', recipeSchema);
