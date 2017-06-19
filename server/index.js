@@ -16,6 +16,8 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 // app.use(express.static(__dirname + '/../angular-client'));
 // app.use(express.static(__dirname + '/../node_modules'));
 
+var query = 'ground%20beef';
+
 app.get('/recipes', function (req, res) {
   items.selectAll(function(err, data) {
     if (err) {
@@ -32,7 +34,11 @@ app.post('/recipes/search', function (req, res) {
     console.log('req received');
 
     // send the API call
+    request(`http://food2fork.com/api/search?key=${key}&q=${query}`, function(err, body, response) {
+      console.log(JSON.parse(response));
+    });
   }
+
   res.send('hello to you from the express server');
 });
 
