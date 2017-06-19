@@ -34,8 +34,11 @@ app.post('/recipes/search', function (req, res) {
     console.log('req received');
 
     // send the API call
-    request(`http://food2fork.com/api/search?key=${key}&q=${query}`, function(err, body, response) {
-      console.log(JSON.parse(response));
+    request.get(`http://food2fork.com/api/search?key=${key}&q=${query}`, function(err, response, body) {
+      if (err) {
+        console.log(err);
+      }
+      console.log(JSON.parse(body));
     });
   }
 
