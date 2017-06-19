@@ -23,12 +23,11 @@ app.get('/items', function (req, res) {
   });
 });
 
-app.post('/recipes', function (req, res) {
+app.post('/recipes/search', function (req, res) {
   if (req) {
     console.log('req received');
-  } else {
-    res.send('hello to client!');
   }
+  res.send('hello to you from the express server');
 });
 
 app.listen(3000, function() {
