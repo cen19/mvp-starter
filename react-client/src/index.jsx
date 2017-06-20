@@ -22,7 +22,8 @@ class App extends React.Component {
         ingredient: this.state.lastSearched
       },
       success: (data) => {
-        console.log(data);
+        console.log('DATA IS FETCHED');
+        // console.log(data);
         this.setState({
           recipes: data
         });
