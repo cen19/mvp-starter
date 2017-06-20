@@ -20,12 +20,13 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 var query = 'ground%20beef';
 
 app.get('/recipes', function (req, res) {
-  recipes.selectAll(function(err, data) {
+  Recipe.selectAll(function(err, data) {
     if (err) {
       res.sendStatus(500);
     } else {
       // res.json(data); // was given to me
-      res.send('getting you some data');
+      res.send(data);
+      // res.send('hellllooooo');
     }
   });
 });
@@ -48,8 +49,6 @@ app.post('/recipes/search', function (req, res) {
           sourceUrl: recipe.source_url,
           imageUrl: recipe.image_url,
           rank: recipe.social_rank,
-          
-
         });
         recipe.save(function(err, recipe) {
           if (err) {

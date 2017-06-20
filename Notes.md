@@ -11,4 +11,4 @@
   .. call the food2fork API and tell mongoose to store the data in MongoDB
 
   .. Try to have it so that when the data is recevied from API
-    .. send it back to the client gs
+    .. send it back to the client

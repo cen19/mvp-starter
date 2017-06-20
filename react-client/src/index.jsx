@@ -33,10 +33,10 @@ class App extends React.Component {
   render () {
     return (<div>
       <h1>Recipes!</h1>
-      {/*<Recipes recipes={this.state.recipes}/>*/}
+
       <div> Input your ingredient here: 
-        <input type="text"></input>
-        <button> Search </button>
+        {/*<input type="text"></input>*/}
+        {/*<button> Search </button>*/}
         </div>
     </div>)
   }
