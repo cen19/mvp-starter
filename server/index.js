@@ -3,14 +3,14 @@ var bodyParser = require('body-parser');
 var key = require('./key.js');
 var request = require('request');
 var Recipe = require('../database-mongo');
-var recipes = require('../database-mongo');
+// var recipes = require('../database-mongo');
 // var Search = require('../react-client/src/components/search.jsx');
 
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
 // var items = require('../database-mysql');
 
 var app = express();
-
+app.use(bodyParser.urlencoded({extended: true}));
 // UNCOMMENT FOR REACT
 app.use(express.static(__dirname + '/../react-client/dist'));
 
@@ -26,9 +26,7 @@ app.get('/recipes', function (req, res) {
     if (err) {
       res.sendStatus(500);
     } else {
-      // res.json(data); // was given to me
       res.send(data);
-      // res.send('hellllooooo');
     }
   });
 });
@@ -36,35 +34,35 @@ app.get('/recipes', function (req, res) {
 app.post('/recipes/search', function (req, res) {
   if (req) {
     console.log('req received');
-
+    
     // send the API call
-    request.get(`http://food2fork.com/api/search?key=${key}&q=${query}`, function(err, response, body) {
-      if (err) {
-        console.log(err);
-      }
-      var parsedBody = JSON.parse(body);
-      console.log(parsedBody);
+    // request.get(`http://food2fork.com/api/search?key=${key}&q=${query}`, function(err, response, body) {
+    //   if (err) {
+    //     console.log(err);
+    //   }
+    //   var parsedBody = JSON.parse(body);
+    //   console.log(parsedBody);
 
-      parsedBody.recipes.forEach(function (recipe) {
-        recipe = new Recipe.Recipe({
-          title: recipe.title,
-          sourceUrl: recipe.source_url,
-          imageUrl: recipe.image_url,
-          rank: recipe.social_rank,
-          searchTerm: query.split('%20').join(' ')
-        });
-        recipe.save(function(err, recipe) {
-          if (err) {
-            console.log(err);
-          } else {
-            console.log(`${recipe.title} was saved!`);
-          }
-        });
-      });
-    });
+    //   parsedBody.recipes.forEach(function (recipe) {
+    //     recipe = new Recipe.Recipe({
+    //       title: recipe.title,
+    //       sourceUrl: recipe.source_url,
+    //       imageUrl: recipe.image_url,
+    //       rank: recipe.social_rank,
+    //       searchTerm: query.split('%20').join(' ')
+    //     });
+    //     recipe.save(function(err, recipe) {
+    //       if (err) {
+    //         console.log(err);
+    //       } else {
+    //         console.log(`${recipe.title} was saved!`);
+    //       }
+    //     });
+    //   });
+    // });
   }
 
-  res.send('hello to you from the express server');
+  res.send(`hello to you from the express server\n we have received this from you : ${req.body.ingredient}`);
 });
 
 app.listen(3000, function() {

@@ -14,8 +14,21 @@ class App extends React.Component {
 
 
   search (value) {
-
     console.log(`the client says "${value}" was submitted!`);
+    $.ajax({
+      url: '/recipes/search',
+      method: 'POST',
+      data: {
+        ingredient: value
+      },
+      success: (data) => {
+        console.log('post went through to the server')
+        console.log(data);
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    })
   }
 
   componentDidMount() {
