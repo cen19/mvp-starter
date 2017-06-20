@@ -19,7 +19,7 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 // app.use(express.static(__dirname + '/../node_modules'));
 
 
-var queryFormatted = 'ground%20beef';
+// var query = 'ground%20beef';
 
 app.get('/recipes', function (req, res) {
   Recipe.selectAll(function(err, data) {
@@ -51,13 +51,14 @@ app.post('/recipes/search', function (req, res) {
           sourceUrl: recipe.source_url,
           imageUrl: recipe.image_url,
           rank: recipe.social_rank,
-          searchTerm: 'something'
+          searchTerm: query.split('%20').join(' ')
         });
-        recipe.update(function(err, recipe) {
+        recipe.save(function(err, recipe) {
           if (err) {
             console.log(err);
+          } else {
+            console.log(`${recipe.title} was saved!`);
           }
-          console.log(`${recipe.title} was saved!`);
         });
       });
     });

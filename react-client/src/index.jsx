@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Search from './components/search.jsx';
-// import List from './components/List.jsx';
+import Recipes from './components/Recipes.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,22 +15,24 @@ class App extends React.Component {
 
   search (value) {
 
-    console.log(`${value} was submitted!`);
+    console.log(`the client says "${value}" was submitted!`);
   }
 
   componentDidMount() {
     // initialization that requires DOM nodes shold go here. Good place to instantiate a network request to a endpoint
-    // $.ajax({
-    //   url: '/items', 
-    //   success: (data) => {
-    //     this.setState({
-    //       items: data
-    //     })
-    //   },
-    //   error: (err) => {
-    //     console.log(`err, ${JSON.stringify({err})}`);
-    //   }
-    // });
+    $.ajax({
+      url: '/recipes',
+      method: 'GET',
+      success: (data) => {
+        console.log(data);
+        this.setState({
+          recipes: data
+        })
+      },
+      error: (err) => {
+        console.log(`err, ${JSON.stringify({err})}`);
+      }
+    });
   }
 
 
@@ -40,6 +42,7 @@ class App extends React.Component {
       <div>
         <h1>Recipes!</h1>
         <Search onSearch={this.search.bind(this)} />
+        <Recipes recipes={this.state.recipes} />
 
 {/*create area for rendering the data put into recipes*/}
         
