@@ -8,10 +8,29 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      recipes: []
+      recipes: [],
+      lastSearched: ''
     }
   }
 
+  fetch() {
+    $.ajax({
+      url: '/recipes',
+      method: 'GET',
+      data: {
+        value: this.state.lastSearched
+      },
+      success: (data) => {
+        console.log(data);
+        this.setState({
+          recipes: data
+        })
+      },
+      error: (err) => {
+        console.log(`err in the fetching`);
+      }
+    });
+  }
 
   search (value) {
     console.log(`the client says "${value}" was submitted!`);
@@ -22,30 +41,23 @@ class App extends React.Component {
         ingredient: value
       },
       success: (data) => {
-        console.log('post went through to the server')
-        console.log(data);
+        // console.log('post went through to the server');
+        // console.log('last thing searched ' + this.state.lastSearched);
+        // console.log(data);
+        fetch();
       },
       error: (err) => {
         console.log(err)
       }
     })
+    this.setState({
+      lastSearched: value
+    })
   }
 
   componentDidMount() {
     // initialization that requires DOM nodes shold go here. Good place to instantiate a network request to a endpoint
-    $.ajax({
-      url: '/recipes',
-      method: 'GET',
-      success: (data) => {
-        console.log(data);
-        this.setState({
-          recipes: data
-        })
-      },
-      error: (err) => {
-        console.log(`err, ${JSON.stringify({err})}`);
-      }
-    });
+    this.fetch();
   }
 
 

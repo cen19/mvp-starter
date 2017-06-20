@@ -3,8 +3,7 @@ var bodyParser = require('body-parser');
 var key = require('./key.js');
 var request = require('request');
 var Recipe = require('../database-mongo');
-// var recipes = require('../database-mongo');
-// var Search = require('../react-client/src/components/search.jsx');
+
 
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
 // var items = require('../database-mysql');
@@ -22,7 +21,17 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 // var query = 'ground%20beef';
 
 app.get('/recipes', function (req, res) {
-  Recipe.selectAll(function(err, data) {
+
+  // var reqBody = req.body.value;
+  // console.log(`this is the data.value I got from you ${reqBody}`);
+  // Recipe.selectAll(function(err, data) {
+  //   if (err) {
+  //     res.sendStatus(500);
+  //   } else {
+  //     res.send(data);
+  //   }
+  // });
+  Recipe.selectSpecific('chicken', function(err, data) {
     if (err) {
       res.sendStatus(500);
     } else {
@@ -41,7 +50,7 @@ app.post('/recipes/search', function (req, res) {
         console.log(err);
       }
       var parsedBody = JSON.parse(body);
-      console.log(parsedBody);
+      // console.log(parsedBody);
 
       parsedBody.recipes.forEach(function (recipe) {
         recipe = new Recipe.Recipe({

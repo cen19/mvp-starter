@@ -32,8 +32,19 @@ var selectAll = function(callback) {
       callback(null, recipes);
     }
   });
+};
 
+var selectSpecific = function(ingredient, callback) {
+  console.log(`select specific ${ingredient}`);
+  Recipe.find({ 'searchTerm' : 'chicken'}, function(err, recipes) {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, recipes);
+    }
+  });
 };
 
 module.exports.Recipe = Recipe;
 module.exports.selectAll = selectAll;
+module.exports.selectSpecific = selectSpecific;
