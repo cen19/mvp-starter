@@ -13,8 +13,9 @@ class App extends React.Component {
   }
 
 
-  search(term) {
-    console.log(`${term} was submitted!`);
+  search (value) {
+    console.log('hi to term');
+    // console.log(`${value} was submitted!`);
   }
 
   componentDidMount() {
@@ -39,6 +40,9 @@ class App extends React.Component {
       <div>
         <h1>Recipes!</h1>
         <Search onSearch={this.search.bind(this)} />
+
+{/*create area for rendering the data put into recipes*/}
+        
       </div>
     )
   }

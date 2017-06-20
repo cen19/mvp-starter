@@ -18,7 +18,9 @@ class Search extends React.Component {
   }
 
   handleSubmit(event) {
-    alert(`Hello, you submitted ${this.state.value}`);
+    // alert(`Hello, you submitted ${this.state.value}`);
+    // need this line to below to pass the value from the input to the index file so that it can be used there
+    this.props.onSearch(this.state.value);
     event.preventDefault(); 
   }
 
