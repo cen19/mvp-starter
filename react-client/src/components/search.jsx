@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 class Search extends React.Component {
   constructor(props) {
@@ -21,7 +22,11 @@ class Search extends React.Component {
     // alert(`Hello, you submitted ${this.state.value}`);
     // need this line to below to pass the value from the input to the index file so that it can be used there
     this.props.onSearch(this.state.value);
+
     event.preventDefault(); 
+    this.setState({
+      value: ''
+    });
   }
 
   render() {

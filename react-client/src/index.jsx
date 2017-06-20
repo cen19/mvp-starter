@@ -14,8 +14,8 @@ class App extends React.Component {
 
 
   search (value) {
-    console.log('hi to term');
-    // console.log(`${value} was submitted!`);
+
+    console.log(`${value} was submitted!`);
   }
 
   componentDidMount() {
