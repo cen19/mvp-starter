@@ -3,10 +3,11 @@ var bodyParser = require('body-parser');
 var key = require('./key.js');
 var request = require('request');
 var Recipe = require('../database-mongo');
+var recipes = require('../database-mongo');
+// var Search = require('../react-client/src/components/search.jsx');
 
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
 // var items = require('../database-mysql');
-var recipes = require('../database-mongo');
 
 var app = express();
 
@@ -17,7 +18,8 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 // app.use(express.static(__dirname + '/../angular-client'));
 // app.use(express.static(__dirname + '/../node_modules'));
 
-var query = 'ground%20beef';
+
+var queryFormatted = 'ground%20beef';
 
 app.get('/recipes', function (req, res) {
   Recipe.selectAll(function(err, data) {
@@ -49,12 +51,13 @@ app.post('/recipes/search', function (req, res) {
           sourceUrl: recipe.source_url,
           imageUrl: recipe.image_url,
           rank: recipe.social_rank,
+          searchTerm: 'something'
         });
-        recipe.save(function(err, recipe) {
+        recipe.update(function(err, recipe) {
           if (err) {
             console.log(err);
           }
-          console.log(recipe);
+          console.log(`${recipe.title} was saved!`);
         });
       });
     });

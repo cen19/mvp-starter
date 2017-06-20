@@ -1,3 +1,5 @@
+import React from 'react';
+
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -10,19 +12,21 @@ class Search extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({
+      value: event.target.value
+    });
   }
 
   handleSubmit(event) {
-    console.log('An ingredient search was submitted: ' + this.state.value);
-    event.preventDefault();
+    alert(`Hello, you submitted ${this.state.value}`);
+    event.preventDefault(); 
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Name:
+          Ingredient:
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
@@ -31,3 +35,4 @@ class Search extends React.Component {
   }
 }
 
+export default Search;

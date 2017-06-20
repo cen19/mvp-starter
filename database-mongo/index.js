@@ -18,7 +18,8 @@ var recipeSchema = mongoose.Schema({
   },
   sourceUrl: String,
   imageUrl: String,
-  rank: Number
+  rank: Number,
+  searchTerm: String
 });
 
 var Recipe = mongoose.model('Recipe', recipeSchema);

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-// import search from './components/search.jsx';
+import Search from './components/search.jsx';
 // import List from './components/List.jsx';
 
 class App extends React.Component {
@@ -12,33 +12,35 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount() {
-    $.ajax({
-      url: '/items', 
-      success: (data) => {
-        this.setState({
-          items: data
-        })
-      },
-      error: (err) => {
-        console.log(`err, ${JSON.stringify({err})}`);
-      }
-    });
+
+  search(term) {
+    console.log(`${term} was submitted!`);
   }
 
-    // search(thing) {
-    //   console.log(`This thing was searched for: ${thing}`);
-    // }
+  componentDidMount() {
+    // initialization that requires DOM nodes shold go here. Good place to instantiate a network request to a endpoint
+    // $.ajax({
+    //   url: '/items', 
+    //   success: (data) => {
+    //     this.setState({
+    //       items: data
+    //     })
+    //   },
+    //   error: (err) => {
+    //     console.log(`err, ${JSON.stringify({err})}`);
+    //   }
+    // });
+  }
 
+
+  // render the basic outline of the page, include components as necessary in the proper format! TAKE NOTE!!!
   render () {
-    return (<div>
-      <h1>Recipes!</h1>
-
-      <div> Input your ingredient here: 
-        {/*<input type="text"></input>*/}
-        {/*<button> Search </button>*/}
-        </div>
-    </div>)
+    return (
+      <div>
+        <h1>Recipes!</h1>
+        <Search onSearch={this.search.bind(this)} />
+      </div>
+    )
   }
 }
 
