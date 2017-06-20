@@ -12,7 +12,10 @@ db.once('open', function() {
 });
 
 var recipeSchema = mongoose.Schema({
-  title: String,
+  title: {
+    type: String,
+    unique: true
+  },
   sourceUrl: String,
   imageUrl: String,
   rank: Number
@@ -28,6 +31,8 @@ var selectAll = function(callback) {
       callback(null, recipes);
     }
   });
+
 };
 
+module.exports.Recipe = Recipe;
 module.exports.selectAll = selectAll;
