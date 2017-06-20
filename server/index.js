@@ -5,6 +5,7 @@ var request = require('request');
 var Recipe = require('../database-mongo');
 
 
+
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
 // var items = require('../database-mysql');
 
@@ -21,9 +22,17 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 // var query = 'ground%20beef';
 
 app.get('/recipes', function (req, res) {
+  // data is appended to the url
 
-  // var reqBody = req.body.value;
-  // console.log(`this is the data.value I got from you ${reqBody}`);
+  if (req) {
+    Recipe.selectSpecific(req.url.slice(20), function(err, data) {
+      if (err) {
+        res.sendStatus(500);
+      } else {
+        res.send(data);
+      }
+    });
+  }
   // Recipe.selectAll(function(err, data) {
   //   if (err) {
   //     res.sendStatus(500);
@@ -31,13 +40,13 @@ app.get('/recipes', function (req, res) {
   //     res.send(data);
   //   }
   // });
-  Recipe.selectSpecific('chicken', function(err, data) {
-    if (err) {
-      res.sendStatus(500);
-    } else {
-      res.send(data);
-    }
-  });
+  // Recipe.selectSpecific(req.url.slice(20), function(err, data) {
+  //   if (err) {
+  //     res.sendStatus(500);
+  //   } else {
+  //     res.send(data);
+  //   }
+  // });
 });
 
 app.post('/recipes/search', function (req, res) {

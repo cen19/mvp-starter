@@ -9,22 +9,24 @@ class App extends React.Component {
     super(props);
     this.state = { 
       recipes: [],
-      lastSearched: ''
+      lastSearched: null
     }
   }
 
   fetch() {
+    console.log('FETCHING DATA!!')
     $.ajax({
       url: '/recipes',
       method: 'GET',
       data: {
-        value: this.state.lastSearched
+        ingredient: this.state.lastSearched
       },
       success: (data) => {
         console.log(data);
         this.setState({
           recipes: data
-        })
+        });
+        this.render();
       },
       error: (err) => {
         console.log(`err in the fetching`);
@@ -41,28 +43,29 @@ class App extends React.Component {
         ingredient: value
       },
       success: (data) => {
-        // console.log('post went through to the server');
-        // console.log('last thing searched ' + this.state.lastSearched);
+        console.log('post went through to the server');
         // console.log(data);
-        fetch();
+        this.setState({
+          lastSearched: value
+        })
+        this.fetch();
       },
       error: (err) => {
         console.log(err)
       }
     })
-    this.setState({
-      lastSearched: value
-    })
+ 
   }
 
-  componentDidMount() {
-    // initialization that requires DOM nodes shold go here. Good place to instantiate a network request to a endpoint
-    this.fetch();
-  }
+  // componentDidMount() {
+  //   // initialization that requires DOM nodes shold go here. Good place to instantiate a network request to a endpoint
+  //   this.fetch();
+  // }
 
 
   // render the basic outline of the page, include components as necessary in the proper format! TAKE NOTE!!!
   render () {
+    console.log('RENDERINGGG')
     return (
       <div>
         <h1>Recipes!</h1>
