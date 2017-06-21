@@ -51,7 +51,7 @@ app.get('/recipes', function (req, res) {
 
 app.post('/recipes/search', function (req, res) {
   if (req) {
-    console.log('req received');
+    // console.log('req received');
     var query = req.body.ingredient.split(' ').join('%20');
 
     // send the API call
@@ -61,33 +61,25 @@ app.post('/recipes/search', function (req, res) {
       }
       var parsedBody = JSON.parse(body);
       // console.log(parsedBody);
-
-      var doThisFirst = new Promise(function(resolve, reject) {
-
-        parsedBody.recipes.forEach(function (recipe) {
-          recipe = new Recipe.Recipe({
-            title: recipe.title,
-            sourceUrl: recipe.source_url,
-            imageUrl: recipe.image_url,
-            rank: recipe.social_rank,
-            searchTerm: query.split('%20').join(' ')
-          });
-          recipe.save(function(err, recipe) {
-            if (err) {
-              console.log(err);
-            } else {
-              console.log(`${recipe.title} was saved!`);
-            }
-          });
+      parsedBody.recipes.forEach(function (recipe) {
+        recipe = new Recipe.Recipe({
+          title: recipe.title,
+          sourceUrl: recipe.source_url,
+          imageUrl: recipe.image_url,
+          rank: recipe.social_rank,
+          searchTerm: query.split('%20').join(' ')
         });
-        resolve();
-      });
-      doThisFirst.then(function() {
-        res.send(`hello to you from the express server\n we have received this from you : ${req.body.ingredient}`);
+        recipe.save(function(err, recipe) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(`${recipe.title} was saved!`);
+          }
+        });
       });
     });
+    res.send(`hello to you from the express server\n we have received this from you : ${req.body.ingredient}`);
     
-
   }
 
   

@@ -36,7 +36,7 @@ var selectAll = function(callback) {
 
 var selectSpecific = function(ingredient, callback) {
   console.log(`select specific ${ingredient}`);
-  Recipe.find({'searchTerm' : ingredient}, function(err, recipes) {
+  Recipe.find({'searchTerm': ingredient}, function(err, recipes) {
     if (err) {
       callback(err, null);
     } else {
